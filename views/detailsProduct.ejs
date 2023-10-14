@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi tiết sản phẩm</title>
+    <!-- Sử dụng Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../style/detailsProduct.css">
+</head>
+<body>
+    <div class="container mt-5 container-custom">
+        <div class="row">
+            <div class="col-md-6">
+                <img src="/images/<%=product.hinhanh%>" alt="<%=product.hinhanh%>" class="img-fluid product-image">
+            </div>
+            <div class="col-md-6 product-details">
+                <h2>Tên sản phẩm: <%=product.tensanpham%></h2>
+                <p>Giá bán: <%=product.giaban%></p>
+                <p>Số lượng còn: <%=product.soluong%></p>
+                <p>Loại sản phẩm: <%=product.ProductType%></p>
+                <a href="/product" class="btn buy-button" type="button">Cancel</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
