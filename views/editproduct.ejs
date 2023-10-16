@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Product</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #ffffff;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+        }
+        .form-container {
+            background-color: #fff;
+            padding: 20px;
+            border: 1px solid #dcdcdc;
+            box-shadow: 0px 0px 10px #dcdcdc;
+            max-width: 1000px; /* Đã to ra 1 chút */
+            margin: 0 auto;
+        }
+        .product-image-input {
+            position: absolute;
+            top: 350px;
+            left: 20px;
+            width: 150px;
+        }
+        .product-image-preview {
+            max-width: 100%;
+            max-height: 200px;
+            object-fit: contain;
+        }
+    </style>
+</head>
+<body>
+    <div class="card form-container">
+        <h2 class="card-header">
+            Edit Product
+        </h2>
+        <div class="card-body">
+            <form method="post" action="/edit-product" enctype="multipart/form-data">
+                <div class="row">
+                    <!-- Left Side (Image Product) -->
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="productImage" style="font-size: 25px;" class="font-weight-bold">Product Image</label>
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="product-image" name="hinhanh">
+                                <label class="custom-file-label" for="product-image">Choose file</label>
+                            </div>
+                            <img src="/images/<%= product.hinhanh %>" alt="Previous Image" name="hinhanh" class="img-thumbnail product-image-preview mt-2">
+                        </div>
+                    </div>
+                    <!-- Right Side (Info Product) -->
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="productQuantity">ID</label>
+                            <input type="text" class="form-control"  readonly ="productQuantity" value="<%= product.id %>" name="id" placeholder="Enter quantity" required>
+                        </div>
+                        <div class="form-group">
+                            <label for "productName">Product Name</label>
+                            <input type="text" class="form-control" id="productName" value="<%= product.tensanpham %>" name="tensanpham" placeholder="Enter product name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="productQuantity">Quantity</label>
+                            <input type="text" class="form-control" id="productQuantity" value="<%= product.soluong %>" name="soluong" placeholder="Enter quantity" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="productPrice">Price</label>
+                            <input type="text" class="form-control" id="productPrice" value="<%= product.giaban %>" name="giaban" placeholder="Enter product price" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="productType">Product Type</label>
+                            <input type="text" class="form-control" id="productType" value="<%= product.ProductType%>" name="ProductType" placeholder="Enter product type" required>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-right">
+                    <a href="/product" class="btn btn-secondary mr-2">Cancel</a>
+                    <button type="submit" class="btn btn-primary">Update Product</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

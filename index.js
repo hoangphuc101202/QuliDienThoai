@@ -37,8 +37,6 @@ app.use(express.static('./public'));
 const productRouter = require('./router/product.router');
 app.use('/', productRouter);
 
-
-
 app.listen(3000, () => {
     console.log("App listen on port 3000");
 })

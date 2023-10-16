@@ -22,5 +22,20 @@ module.exports = {
             return null;
           }
           return result[0][0]
+    },
+    getImageFromDB : async(id) =>{
+        const connection = await DBConnect.connection;
+        const [image] = await connection.execute('SELECT hinhanh FROM product WHERE id = ?', [id]);
+        if(image[0].length == 0) {
+            return null;
+        }
+      
+    },
+    updateProduct: async(id, tensanpham, soluong, giaban, hinhanh, ProductType) => {
+        const connection = await DBConnect.connection;
+        const result  = await connection.execute('UPDATE product SET tensanpham=?,soluong=?, giaban=?, hinhanh=?, ProductType=? WHERE id=?',
+        [tensanpham, soluong, giaban, hinhanh, ProductType, id]);
+        if(result[0].changedRows == 0) return null;
+        return true;
     }
 }
