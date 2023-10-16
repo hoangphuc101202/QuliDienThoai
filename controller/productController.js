@@ -33,7 +33,7 @@ module.exports ={
     return res.redirect('/product');
     res.render('editproduct.ejs', {product});
     },
-    updateProduct : async (req,res,next) =>{
+    updateProduct : async (req,res) =>{
         const {id, tensanpham, soluong, giaban, ProductType } = req.body;
         let file = req.file;
         let hinhanh = null
