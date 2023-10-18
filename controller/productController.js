@@ -1,9 +1,11 @@
-const {findAllProduct, addProduct, detailsProductByID, updateProduct, getImageFromDB} = require('../model/product');
+const {findAllProduct, addProduct, detailsProductByID, updateProduct, removeProduct} = require('../model/product');
 module.exports ={
     homePage: async (req,res) =>{
         const products = await findAllProduct();
         res.render('homepage',{
-            products
+            products,
+            error_message: req.flash('error_message'),
+            info_message: req.flash('info_message')
         })
     },
     addProduct : async (req, res, next) => {
@@ -48,6 +50,17 @@ module.exports ={
     const product = await updateProduct(id,tensanpham,soluong,giaban,hinhanh,ProductType );
     if(!product) return res.redirect('/product');
     res.redirect('/product');
+    },
+    deleteProduct : async (req,res ) => {
+        const result = await removeProduct(+req.params.id);
+        if(!result) {
+            req.flash('error_message' , 'Delete Error')
+            res.redirect('/product');
+        }
+        else{
+            req.flash('info_message' ,'Delete Success');
+            res.redirect('/product');
+        }
     }
     
     

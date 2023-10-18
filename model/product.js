@@ -29,5 +29,13 @@ module.exports = {
         [tensanpham, soluong, giaban, hinhanh, ProductType, id]);
         if(result[0].changedRows == 0) return null;
         return true;
+    },
+    removeProduct: async (id) => {
+        const connect = await DBConnect.connection;
+        const result = await connect.execute('DELETE FROM product WHERE id = ?', [id]);
+        if(result[0].affectedRows == 0) {
+            return null;
+        }
+        return true
     }
 }

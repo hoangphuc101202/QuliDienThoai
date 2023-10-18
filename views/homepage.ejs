@@ -38,6 +38,12 @@ $(document).ready(function(){
                     <a href="/add" type="button" style= "margin-left: 20px;"class="btn btn-info d-inline-flex p-2">Add Product</a>
                 </div>
             </div>
+            <label for="" class="">
+                <%=error_message%>
+              </label>
+              <label for="" class="">
+                <%=info_message%>
+              </label>
             <table class="table table-striped table-hover table-bordered">
                 <thead>
                    
@@ -54,7 +60,7 @@ $(document).ready(function(){
                 <tbody>
                     <% let count = 0%>
                     <% products.forEach((product) => { %>
-                    <tr>
+                    <tr> 
                         <td><%= product.id %></td>
                         <td><%= product.tensanpham %></td>
                         <td><%= product.soluong %></td>
@@ -63,7 +69,7 @@ $(document).ready(function(){
                         <td>
                             <a href="/product/<%= product.id %>" class="view" title="View" data-toggle="tooltip"><i class="material-icons">&#xE417;</i></a>
                             <a href="/edit-product/<%=product.id%>" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
-                            <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>     
+                            <a href="/delete/<%= product.id%>" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>     
                         </td>
                     </tr>
                     <% count ++%>
@@ -74,9 +80,9 @@ $(document).ready(function(){
                 <div class="hint-text">Showing <b><%= count%></b> out of <b>25</b> entries</div>
                 <ul class="pagination">
                     <li class="page-item disabled"><a href="#"><i class="fa fa-angle-double-left"></i></a></li>
-                    <li class="page-item"><a href="#" class="page-link">1</a></li>
+                    <li class="page-item active"><a href="#" class="page-link">1</a></li>
                     <li class="page-item"><a href="#" class="page-link">2</a></li>
-                    <li class="page-item active"><a href="#" class="page-link">3</a></li>
+                    <li class="page-item "><a href="#" class="page-link">3</a></li>
                     <li class="page-item"><a href="#" class="page-link">4</a></li>
                     <li class="page-item"><a href="#" class="page-link">5</a></li>
                     <li class="page-item"><a href="#" class="page-link"><i class="fa fa-angle-double-right"></i></a></li>

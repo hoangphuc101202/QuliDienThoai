@@ -4,7 +4,9 @@ const bodyParser = require('body-parser');
 const flash = require('connect-flash');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
+const sessionConfig = require('./config/session')
 const multer = require('multer');
+const Swal = require('sweetalert2');
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
@@ -15,7 +17,7 @@ const storage = multer.diskStorage({
         ) {
             cb(null, './public/images'); // Thư mục đích để lưu hình ảnh
         } else {
-            cb(new Error('Không phải là hình ảnh'), false);
+            cb(new Error('Khong phai la hinh anh'), false);
         }
     },
     filename: (req, file, cb) => {
@@ -29,7 +31,7 @@ module.exports = upload;
 
 app.use(cookieParser(''));
 app.use(flash());
-
+app.use(session(sessionConfig))
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static('./public'));
