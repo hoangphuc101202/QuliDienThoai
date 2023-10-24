@@ -61,6 +61,15 @@ module.exports ={
             req.flash('info_message' ,'Delete Success');
             res.redirect('/product');
         }
+    },
+    searchProduct: async (req,res) => {
+        const result = await detailsProductByID(+req.body.searchTerm);
+        if(!result) {
+            req.flash('error_message', 'Khong tim thay san pham');
+            res.redirect('/product');
+            return;
+        }
+       res.render('searchProduct',{result});
     }
     
     
